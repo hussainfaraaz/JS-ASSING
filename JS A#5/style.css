@@ -1,0 +1,23 @@
+.stopwatch  {
+    font-size: 24px;
+    text-align: center;
+    margin: 20px;
+  }
+
+  .buttons {
+    text-align: center;
+  
+    
+    
+  }
+  h1{
+    text-align: center;
+  }
+  
+  .button{
+    background-color: goldenrod;
+    width: 100px;
+    height: 30px;
+    font-weight:bolder
+   
+  }
