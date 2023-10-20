@@ -1,45 +1,34 @@
-let isRunning = false;
-    let seconds = 0;
-    let minutes = 0;
-    let hours = 0;
-    let interval;
 
-    function startStop() {
-      if (isRunning) {
-        clearInterval(interval);
-        document.querySelector("button").textContent = "Start";
-      } else {
-        interval = setInterval(updateTime, 1000);
-        document.querySelector("button").textContent = "Stop";
-      }
-      isRunning = !isRunning;
-    }
 
-    function reset() {
-      clearInterval(interval);
-      isRunning = false;
-      seconds = 0;
-      minutes = 0;
-      hours = 0;
-      document.querySelector(".stopwatch").textContent = "0:00:00";
-      document.querySelector("button").textContent = "Start";
-    }
 
-    function updateTime() {
-      seconds++;
-      if (seconds >= 60) {
-        seconds = 0;
-        minutes++;
-        if (minutes >= 60) {
-          minutes = 0;
-          hours++;
-        }
-      }
 
-      const timeString =
-        (hours < 10 ? "0" : "") + hours + ":" +
-        (minutes < 10 ? "0" : "") + minutes + ":" +
-        (seconds < 10 ? "0" : "") + seconds;
+function addItem() {
+  var input = document.getElementById("newItem").value;
+  var itemList = document.getElementById("itemList");
+  var li = document.createElement("li");
+  li.appendChild(document.createTextNode(input));
+  
 
-      document.querySelector(".stopwatch").textContent = timeString;
-    }
+
+  var edit = document.createElement("button");
+  edit.appendChild(document.createTextNode("edit"));
+  edit.onclick = function(){
+    li.innerHTML = prompt ("Edit-Produt");
+    edit.marginLeft = "10px";
+  }
+  li.appendChild(edit);
+
+  var del = document.createElement("button");
+  del.appendChild(document.createTextNode("Delete"));
+  del.onclick = function() {
+      itemList.removeChild(li);
+  }
+
+
+  
+ 
+  li.appendChild(del);
+  itemList.appendChild(li);
+  
+  document.getElementById("newItem").value = "";
+}
